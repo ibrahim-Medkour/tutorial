@@ -1,0 +1,39 @@
+usecase-beta
+
+actor Administrateur
+actor Conducteur
+actor Passager
+
+    UC1("Consulter les catégories")
+    UC2("Ajouter une catégorie")
+    UC3("Modifier une catégorie")
+    UC4("Supprimer une catégorie")
+    UC5("Créer un auteur")
+    UC6("Valider un article")
+    UC7("Publier un article")
+
+    UC8("Rechercher un trajet")
+    UC9("Réserver une place")
+    UC11("Annuler une réservation")
+    UC12("Consulter mes réservations")
+
+
+Administrateur --> UC1
+Administrateur --> UC2
+Administrateur --> UC3
+Administrateur --> UC4
+Administrateur --> UC5
+Administrateur --> UC6
+Administrateur --> UC7
+
+
+
+Conducteur --> Creer_trajet
+Conducteur --> Modifier_trajet
+Conducteur --> Supprimer_trajet
+Conducteur --> Consulter_reservations
+
+Passager --> Rechercher_trajet
+Passager --> Reserver_place
+Passager --> Annuler_reservation
+Passager --> Consulter_mes_reservations
