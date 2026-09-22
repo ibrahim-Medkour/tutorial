@@ -12,10 +12,15 @@ actor Passager
     UC6("Valider un article")
     UC7("Publier un article")
 
-    UC8("Rechercher un trajet")
-    UC9("Réserver une place")
-    UC11("Annuler une réservation")
-    UC12("Consulter mes réservations")
+    UC8("Ajouter un article")
+    UC9("Modifier un article non publié")
+    UC10("Supprimer un article non publié")
+    UC11("Changer son profil")
+    UC12("Réinitialiser son mot de passe")
+
+
+    UC13("Consulter les articles")
+
 
 
 Administrateur --> UC1
@@ -28,12 +33,11 @@ Administrateur --> UC7
 
 
 
-Conducteur --> Creer_trajet
-Conducteur --> Modifier_trajet
-Conducteur --> Supprimer_trajet
-Conducteur --> Consulter_reservations
+Auteur --> UC8
+Auteur --> UC9
+Auteur --> UC10
+Auteur --> UC11
+Auteur --> UC12
 
-Passager --> Rechercher_trajet
-Passager --> Reserver_place
-Passager --> Annuler_reservation
-Passager --> Consulter_mes_reservations
+
+Visiteur --> UC13
