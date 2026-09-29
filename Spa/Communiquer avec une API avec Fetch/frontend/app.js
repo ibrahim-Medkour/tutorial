@@ -1,5 +1,5 @@
 
-const API_URL = "api.php";
+const API_URL = "../backend/api.php";
 
 const tableBody = document.querySelector("#table-body");
 const form = document.querySelector("#form-categorie");

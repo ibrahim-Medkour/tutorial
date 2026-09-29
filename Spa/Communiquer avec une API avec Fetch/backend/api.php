@@ -29,69 +29,69 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 // POST
 // ==========================
 
-// if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-//     $data = json_decode(
-//         file_get_contents("php://input"),
-//         true
-//     );
+    $data = json_decode(
+        file_get_contents("php://input"),
+        true
+    );
 
-//     // Générer un nouvel ID
-//     $data["id"] = count($categories) + 1;
+    // Générer un nouvel ID
+    $data["id"] = count($categories) + 1;
 
-//     // Ajouter la catégorie
-//     $categories[] = $data;
+    // Ajouter la catégorie
+    $categories[] = $data;
 
-//     // Sauvegarder
-//     file_put_contents(
-//         $file,
-//         json_encode($categories, JSON_PRETTY_PRINT)
-//     );
+    // Sauvegarder
+    file_put_contents(
+        $file,
+        json_encode($categories, JSON_PRETTY_PRINT)
+    );
 
-//     echo json_encode([
-//         "status" => "success",
-//         "message" => "Catégorie ajoutée",
-//         "data" => $data
-//     ]);
+    echo json_encode([
+        "status" => "success",
+        "message" => "Catégorie ajoutée",
+        "data" => $data
+    ]);
 
-//     exit;
-// }
+    exit;
+}
 
 
-// // ==========================
-// // PUT
-// // ==========================
+// ==========================
+// PUT
+// ==========================
 
-// if ($_SERVER["REQUEST_METHOD"] === "PUT") {
+if ($_SERVER["REQUEST_METHOD"] === "PUT") {
 
-//     $data = json_decode(
-//         file_get_contents("php://input"),
-//         true
-//     );
+    $data = json_decode(
+        file_get_contents("php://input"),
+        true
+    );
 
-//     foreach ($categories as &$categorie) {
+    foreach ($categories as &$categorie) {
 
-//         if ($categorie["id"] == $data["id"]) {
+        if ($categorie["id"] == $data["id"]) {
 
-//             $categorie["nom"] = $data["nom"];
-//             $categorie["couleur"] = $data["couleur"];
-//             $categorie["icone"] = $data["icone"];
+            $categorie["nom"] = $data["nom"];
+            $categorie["couleur"] = $data["couleur"];
+            $categorie["icone"] = $data["icone"];
 
-//         }
-//     }
+        }
+    }
 
-//     // Sauvegarder les modifications
-//     file_put_contents(
-//         $file,
-//         json_encode($categories, JSON_PRETTY_PRINT)
-//     );
+    // Sauvegarder les modifications
+    file_put_contents(
+        $file,
+        json_encode($categories, JSON_PRETTY_PRINT)
+    );
 
-//     echo json_encode([
-//         "status" => "success",
-//         "message" => "Catégorie modifiée",
-//         "data" => $data
-//     ]);
+    echo json_encode([
+        "status" => "success",
+        "message" => "Catégorie modifiée",
+        "data" => $data
+    ]);
 
-//     exit;
-// }
+    exit;
+}
 
