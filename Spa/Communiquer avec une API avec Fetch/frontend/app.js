@@ -1,4 +1,3 @@
-
 const API_URL = "../backend/api.php";
 
 const tableBody = document.querySelector("#table-body");
@@ -12,7 +11,7 @@ let ligneEnEdition = null;
 
 
 // ==========================
-// GET — Charger les catégories
+// GET
 // ==========================
 
 function chargerCategories() {
@@ -71,13 +70,12 @@ function chargerCategories() {
 
 
 // ==========================
-// POST / PUT — Formulaire
+// POST / PUT
 // ==========================
 
 form.addEventListener("submit", (event) => {
 
     event.preventDefault();
-
 
     const data = {
 
@@ -89,12 +87,10 @@ form.addEventListener("submit", (event) => {
 
     };
 
-
-    // Par défaut : POST
     let method = "POST";
 
 
-    // Si on est en mode édition : PUT
+    // PUT
     if (ligneEnEdition !== null) {
 
         data.id = ligneEnEdition;
@@ -103,10 +99,6 @@ form.addEventListener("submit", (event) => {
 
     }
 
-
-    // ==========================
-    // Envoyer vers API
-    // ==========================
 
     fetch(API_URL, {
 
@@ -124,13 +116,10 @@ form.addEventListener("submit", (event) => {
 
         console.log(result);
 
-        // Vider le formulaire
         form.reset();
 
-        // Quitter le mode édition
         ligneEnEdition = null;
 
-        // Recharger le tableau
         chargerCategories();
 
     });
@@ -147,4 +136,3 @@ document.addEventListener("DOMContentLoaded", () => {
     chargerCategories();
 
 });
-

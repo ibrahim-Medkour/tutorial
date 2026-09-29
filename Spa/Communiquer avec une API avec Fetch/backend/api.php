@@ -2,8 +2,9 @@
 
 header("Content-Type: application/json");
 
-$file = "data.json";
+$file = "../frontend/data.json";
 
+// Lire les données
 $categories = json_decode(
     file_get_contents($file),
     true
@@ -36,13 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         true
     );
 
-    // Générer un nouvel ID
     $data["id"] = count($categories) + 1;
 
-    // Ajouter la catégorie
     $categories[] = $data;
 
-    // Sauvegarder
     file_put_contents(
         $file,
         json_encode($categories, JSON_PRETTY_PRINT)
@@ -80,7 +78,6 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
         }
     }
 
-    // Sauvegarder les modifications
     file_put_contents(
         $file,
         json_encode($categories, JSON_PRETTY_PRINT)
@@ -94,4 +91,3 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
 
     exit;
 }
-
