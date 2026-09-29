@@ -4,17 +4,13 @@ header("Content-Type: application/json");
 
 $file = "../frontend/data.json";
 
-// Lire les données
 $categories = json_decode(
     file_get_contents($file),
     true
 );
 
 
-// ==========================
 // GET
-// ==========================
-
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
     echo json_encode([
@@ -26,10 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 }
 
 
-// ==========================
 // POST
-// ==========================
-
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $data = json_decode(
@@ -56,10 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 
-// ==========================
 // PUT
-// ==========================
-
 if ($_SERVER["REQUEST_METHOD"] === "PUT") {
 
     $data = json_decode(
@@ -74,7 +64,6 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
             $categorie["nom"] = $data["nom"];
             $categorie["couleur"] = $data["couleur"];
             $categorie["icone"] = $data["icone"];
-
         }
     }
 
@@ -87,6 +76,38 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
         "status" => "success",
         "message" => "Catégorie modifiée",
         "data" => $data
+    ]);
+
+    exit;
+}
+
+
+// DELETE
+if ($_SERVER["REQUEST_METHOD"] === "DELETE") {
+
+    $data = json_decode(
+        file_get_contents("php://input"),
+        true
+    );
+
+    $categories = array_filter(
+        $categories,
+        function ($categorie) use ($data) {
+
+            return $categorie["id"] != $data["id"];
+        }
+    );
+
+    $categories = array_values($categories);
+
+    file_put_contents(
+        $file,
+        json_encode($categories, JSON_PRETTY_PRINT)
+    );
+
+    echo json_encode([
+        "status" => "success",
+        "message" => "Catégorie supprimée"
     ]);
 
     exit;

@@ -10,10 +10,7 @@ const iconeInput = document.querySelector("#icone");
 let ligneEnEdition = null;
 
 
-// ==========================
 // GET
-// ==========================
-
 function chargerCategories() {
 
     fetch(API_URL)
@@ -32,21 +29,12 @@ function chargerCategories() {
                     <td>${categorie.couleur}</td>
                     <td>${categorie.icone}</td>
                     <td>
-                        <button class="btn-edit">
-                            Modifier
-                        </button>
-
-                        <button class="btn-delete">
-                            Supprimer
-                        </button>
+                        <button class="btn-edit">Modifier</button>
+                        <button class="btn-delete">Supprimer</button>
                     </td>
                 `;
 
-
-                // ==========================
-                // Modifier
-                // ==========================
-
+                // PUT
                 const btnEdit = ligne.querySelector(".btn-edit");
 
                 btnEdit.addEventListener("click", () => {
@@ -60,6 +48,35 @@ function chargerCategories() {
                 });
 
 
+                // DELETE
+                const btnDelete = ligne.querySelector(".btn-delete");
+
+                btnDelete.addEventListener("click", () => {
+
+                    fetch(API_URL, {
+
+                        method: "DELETE",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            id: categorie.id
+                        })
+
+                    })
+                    .then(response => response.json())
+                    .then(result => {
+
+                        console.log(result);
+
+                        chargerCategories();
+
+                    });
+
+                });
+
                 tableBody.appendChild(ligne);
 
             });
@@ -69,36 +86,25 @@ function chargerCategories() {
 }
 
 
-// ==========================
 // POST / PUT
-// ==========================
-
 form.addEventListener("submit", (event) => {
 
     event.preventDefault();
 
     const data = {
-
         nom: nomInput.value,
-
         couleur: couleurInput.value,
-
         icone: iconeInput.value
-
     };
 
     let method = "POST";
 
-
-    // PUT
     if (ligneEnEdition !== null) {
 
         data.id = ligneEnEdition;
 
         method = "PUT";
-
     }
-
 
     fetch(API_URL, {
 
@@ -127,10 +133,7 @@ form.addEventListener("submit", (event) => {
 });
 
 
-// ==========================
-// Charger au démarrage
-// ==========================
-
+// Démarrage
 document.addEventListener("DOMContentLoaded", () => {
 
     chargerCategories();

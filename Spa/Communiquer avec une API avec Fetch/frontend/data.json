@@ -16,11 +16,5 @@
         "nom": "Laravel",
         "couleur": "Rouge",
         "icone": "laravel"
-    },
-    {
-        "nom": "java",
-        "couleur": "white",
-        "icone": "codess",
-        "id": 4
     }
 ]
