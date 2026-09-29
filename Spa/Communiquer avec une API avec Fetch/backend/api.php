@@ -2,7 +2,7 @@
 
 header("Content-Type: application/json");
 
-$file = "../frontend/data.json";
+$file = "./data.json";
 
 $categories = json_decode(
     file_get_contents($file),
