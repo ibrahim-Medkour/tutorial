@@ -1,0 +1,15 @@
+
+[
+    {
+        "id": 1,
+        "nom": "Développement Web",
+        "couleur": "blue",
+        "icone": "fa-code"
+    },
+    {
+        "id": 2,
+        "nom": "Design",
+        "couleur": "pink",
+        "icone": "fa-paint-brush"
+    }
+]
