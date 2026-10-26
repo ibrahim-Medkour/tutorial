@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des catégories</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 450px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #1e293b;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 8px;
+        }
+
+        input {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        #message {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Ajouter une catégorie</h1>
+
+        <form id="form-categorie">
+            <label for="nom">Nom de la catégorie</label>
+
+            <input
+                type="text"
+                id="nom"
+                name="nom"
+                placeholder="Exemple : Design"
+                required
+            >
+
+            <button type="submit" id="btn-submit-form">
+                Enregistrer
+            </button>
+        </form>
+
+        <p id="message" role="status" ></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
